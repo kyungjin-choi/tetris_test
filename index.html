@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#10172f" />
+    <title>Neon Stack — Tetris</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="Neon Stack 홈">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span>NEON<span>STACK</span></span>
+        </a>
+        <div class="topbar-meta">
+          <span class="live-dot"></span>
+          <span>ARCADE MODE</span>
+        </div>
+      </header>
+
+      <section class="hero-copy" aria-labelledby="page-title">
+        <p class="eyebrow">CLASSIC BLOCK PUZZLE / 001</p>
+        <h1 id="page-title">Make room.<br /><em>Clear lines.</em></h1>
+        <p class="intro">떨어지는 블록을 정렬해 가득 찬 줄을 지워보세요.<br />빠르게 쌓고, 오래 살아남을수록 점수가 올라갑니다.</p>
+      </section>
+
+      <section class="game-layout" aria-label="테트리스 게임">
+        <aside class="side-panel left-panel">
+          <div class="panel-block score-block">
+            <span class="panel-label">SCORE</span>
+            <strong id="score">000000</strong>
+            <span class="best-score">BEST <b id="bestScore">000000</b></span>
+          </div>
+
+          <div class="panel-block stats-block">
+            <div class="stat-row"><span>LEVEL</span><strong id="level">01</strong></div>
+            <div class="stat-row"><span>LINES</span><strong id="lines">000</strong></div>
+          </div>
+
+          <div class="panel-block controls-card">
+            <span class="panel-label">HOW TO PLAY</span>
+            <div class="key-hint"><kbd>←</kbd><kbd>→</kbd><span>MOVE</span></div>
+            <div class="key-hint"><kbd>↑</kbd><span>ROTATE</span></div>
+            <div class="key-hint"><kbd>↓</kbd><span>SOFT DROP</span></div>
+            <div class="key-hint"><kbd>SPACE</kbd><span>HARD DROP</span></div>
+            <div class="key-hint"><kbd>P</kbd><span>PAUSE</span></div>
+          </div>
+        </aside>
+
+        <div class="board-column">
+          <div class="board-header">
+            <span class="board-status"><i class="live-dot"></i><span id="statusText">READY</span></span>
+            <span class="board-size">10 × 20 GRID</span>
+          </div>
+          <div class="board-frame">
+            <div id="board" class="board" role="grid" aria-label="테트리스 게임 보드"></div>
+            <div id="stateOverlay" class="state-overlay visible">
+              <div class="overlay-card">
+                <span class="overlay-kicker">WELCOME TO THE GRID</span>
+                <h2 id="overlayTitle">READY?</h2>
+                <p id="overlayMessage">블록을 쌓고, 완성된 줄을 지워보세요.</p>
+                <button id="overlayButton" class="primary-button" type="button">게임 시작</button>
+              </div>
+            </div>
+            <div id="pauseOverlay" class="pause-overlay" aria-hidden="true">
+              <div>
+                <span class="overlay-kicker">SYSTEM HOLD</span>
+                <strong>PAUSED</strong>
+                <span>P 또는 ESC를 눌러 계속하기</span>
+              </div>
+            </div>
+          </div>
+          <div class="board-footer">
+            <span><i class="footer-marker"></i> NEXT PIECE</span>
+            <span>R TO RESTART</span>
+          </div>
+        </div>
+
+        <aside class="side-panel right-panel">
+          <div class="panel-block next-block-card">
+            <div class="card-heading"><span class="panel-label">NEXT PIECE</span><span class="piece-index">01</span></div>
+            <div id="nextPreview" class="next-preview" aria-label="다음 블록 미리보기"></div>
+          </div>
+
+          <div class="panel-block score-guide">
+            <span class="panel-label">SCORING</span>
+            <div class="score-row"><span>SINGLE</span><b>100</b></div>
+            <div class="score-row"><span>DOUBLE</span><b>300</b></div>
+            <div class="score-row"><span>TRIPLE</span><b>500</b></div>
+            <div class="score-row accent"><span>TETRIS</span><b>800</b></div>
+            <small>× current level</small>
+          </div>
+
+          <button id="restartButton" class="outline-button" type="button"><span>↻</span> NEW GAME <kbd>R</kbd></button>
+        </aside>
+      </section>
+
+      <section class="touch-controls" aria-label="화면 조작 버튼">
+        <div class="touch-row">
+          <button type="button" data-action="left" aria-label="왼쪽 이동">←</button>
+          <button type="button" data-action="right" aria-label="오른쪽 이동">→</button>
+        </div>
+        <div class="touch-row touch-row-main">
+          <button type="button" data-action="rotate" aria-label="회전">↻</button>
+          <button type="button" data-action="down" aria-label="빠르게 내리기">↓</button>
+          <button type="button" data-action="drop" aria-label="즉시 떨어뜨리기">⇣</button>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <span>BUILT FOR FOCUS</span>
+        <span>NEON STACK / 2026</span>
+      </footer>
+    </main>
+  </body>
+</html>
